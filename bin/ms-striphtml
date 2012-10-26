@@ -1,0 +1,36 @@
+#!/usr/bin/ruby
+
+require 'getoptlong'
+begin
+	require 'mightystring'
+rescue LoadError
+	require 'rubygems'
+	require 'mightystring'
+end
+
+include MightyString
+opts = GetoptLong.new(
+["--license",	"-l",		GetoptLong::NO_ARGUMENT],
+["--test",	"-t",		GetoptLong::NO_ARGUMENT],
+["--help",	"-h",		GetoptLong::NO_ARGUMENT]
+)
+opts.each do |opt, arg|
+	case opt
+		when "--help"
+			puts "Yes.  You do indeed need help.  Go seek it."
+			#RDoc::usage
+		when "--test"
+			#Strip_HTML.test = true
+			HTML.testCase
+		when "--license"
+			#Strip_HTML.license = true
+			HTML.license
+	end
+end
+if ARGV.any? { |s| s.downcase.include?('.htm') } then
+	ARGV.each do |s|
+		if s.downcase.include?('.htm') and File.exists?(s)
+			puts HTML.strip_html( File.open(s, "rb").read )
+		end
+	end
+end
