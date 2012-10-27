@@ -19,13 +19,13 @@ class TestMightyString < Test::Unit::TestCase
 		assert "the apple is the best fruit in the world".index_all "the" == [0, 13, 31]
 	end
 	
-	def test_matchpci
+	def test_match_pci
 		assert "<TD>".match_pci("td")
 		assert "<TD>".match_pci("><") == false
 		assert "Principle".match_pci("rINCi")
 	end
 	
-	def test_stripbyac
+	def test_strip_byac
 		assert "qa2ws3ed4rf5tg6yh7uj8ik9ol".strip_byac( Range.new( "0", "9" ).to_a ) == "23456789"
 		
 		custRange = (Range.new('a','z').to_a + Range.new('A','Z').to_a + [" "]).flatten
