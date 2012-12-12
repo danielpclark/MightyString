@@ -2,10 +2,6 @@
 # by Daniel P. Clark
 # webmaster@6ftdan.com
 
-# BUMP > after find_all was depreciated from Ruby 1.8.7 this didn't work.
-# And it turns out this is a lot simpler then expected.
-# Here for backwards compatibility.
-
 # Match Partial Case-Insensitive
 module Match_PCI
     module String

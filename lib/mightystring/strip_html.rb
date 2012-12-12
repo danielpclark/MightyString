@@ -61,7 +61,7 @@ module MightyString
 		end
 
 		def self.math_by_space
-			true # if this is set then < followed by a space is considered not a html tag, like wise > with a space beforehand
+			false # TODO FIXME exceptions get past a href 12-12-12
 		end
 
 		# End define generic rules ***
