@@ -41,7 +41,10 @@ module Del
         			else
         				return self[0..in_srch-1] + self[(in_srch+1)..self.length]
         			end
-        		end			
+        		end
+        		elsif in_srch.is_a?(String) and not in_srch.empty?
+        			return self.split(in_srch).join
+        		end
 		end
 		return nil
 	end
