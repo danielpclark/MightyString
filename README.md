@@ -18,10 +18,9 @@ Advanced detail.
  * Look at the test/test_ms.rb for case usages of each feature.
 
 Follow this project and contribute via github http://www.github.com/danielpclark/mightystring
-
-
-
-Version 0.1.4
- Added string input acceptance to del
- Example: "12#34#56#78".del("#")
- => "12345678"
+<br>
+<br>
+Version <strong>0.1.4</strong><br>
+ * Added string input acceptance to del<br>
+ Example:<br>
+<code>"12#34#56#78".del("#") # => "12345678"</code></p>
