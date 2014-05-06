@@ -12,6 +12,7 @@ class TestMightyString < Test::Unit::TestCase
 	def test_del
 		assert "abc".del(1) == "ac"
 		assert "0123456789".del(0..2) == "3456789"
+		assert "iudsfbv\nui4adv\nvw7revg".del("\n") == "iudsfbvui4advvw7revg"
 	end
 	
 	def test_index_all

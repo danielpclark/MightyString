@@ -4,7 +4,7 @@
 # Mighty String - Strip HTML
 # Ruby should be easy to read, regex is not.  I believe string block handling can be done better than rough regex'ing.
 #
-# TODO *FIXME* A rare href exception gets by, as well as some comment cases. 0.1 11-27-2012 "Release Version" 
+# TODO *FIXME* A rare href exception gets by, as well as some comment cases, only if math_by_space is enabled. 0.1 11-27-2012 "Release Version" 
 #
 # Ver 0.1 11-27-2012 "Release Version"
 # - Modularized and Gemified
@@ -38,13 +38,13 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
 #   REQUIRE   #
 begin
-	require 'string_match_pci'
-	require 'string_index_all'
+	require 'string_match_pci' unless defined? Match_PCI
+	require 'string_index_all' unless defined? Index_All
 rescue LoadError # For test-unit
 	$: << File.join(File.dirname(__FILE__), "/../lib")
 	$: << File.join(File.dirname(__FILE__), "/../lib/mightystring")
-	require 'string_matchpci'
-	require 'string_index_all'
+	require 'string_match_pci' unless defined? Match_PCI
+	require 'string_index_all' unless defined? Index_All
 end
 # END REQUIRE #
 class String

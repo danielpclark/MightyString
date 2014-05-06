@@ -5,7 +5,7 @@
 # Example acceptable charachters = (Range.new('a','z').to_a + Range.new('A','Z').to_a + Range.new('0','9').to_a + ['.','-','_',"'",'"',',']).flatten
 
 # Strip by Acceptable Characters
-module StripbyAC
+module Strip_byAC
     module String
     	# Strip by Acceptable Characters : String.stripbyac(charlist) => Copy of New String (removes any character not in list)
         def strip_byac(acceptchars)
