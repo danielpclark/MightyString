@@ -4,10 +4,10 @@
 
 
 module Join
-    module String
-    	# Returns String
-        def join
-        	return self
-    	end
+  module String
+    # Returns String
+    def join
+      return self
     end
+  end
 end

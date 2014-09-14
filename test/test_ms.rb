@@ -1,7 +1,5 @@
-$: << File.join(File.dirname(__FILE__), "/../lib")
-$: << File.join(File.dirname(__FILE__), "/../lib/mightystring")
 require 'test/unit'
-require 'mightystring'
+require_relative '../lib/mightystring'
 
 class TestMightyString < Test::Unit::TestCase
 	def test_at
@@ -14,6 +12,11 @@ class TestMightyString < Test::Unit::TestCase
 		assert "0123456789".del(0..2) == "3456789"
 		assert "iudsfbv\nui4adv\nvw7revg".del("\n") == "iudsfbvui4advvw7revg"
 	end
+
+	def test_each
+		 assert "12345".each.all?{|i| i.to_i < 10}
+	end
+
 	
 	def test_index_all
 		assert "012324507654301243".index_all 0 == [0,7,13]

@@ -4,10 +4,10 @@
 
 
 module Fetch
-    module String
-    	# Fetch position in String
-        def fetch(x)
-        	return self[x]
-    	end
+  module String
+    # Fetch position in String
+    def fetch(x)
+      return self[x]
     end
+  end
 end

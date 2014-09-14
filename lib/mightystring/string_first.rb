@@ -4,10 +4,10 @@
 
 
 module First
-    module String
-    	# First character in String
-        def first
-            return self[0]
-    	end
+  module String
+    # First character in String
+    def first
+      return self[0]
     end
+  end
 end

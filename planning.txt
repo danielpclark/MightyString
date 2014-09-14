@@ -1,22 +1,16 @@
 
 Add testing for all implementations.
 
-each
-each_index
-reverse_each
-find_index
+
 rotate
 rotate!
 sort_by!
 collect
 collect!
-map
 map!
 select
 select!
 keep_if
-values_at
-delete_at
 delete_if
 reject
 reject!
@@ -51,10 +45,7 @@ pack
 entries
 sort_by
 grep
-find
 detect
-find_all
-flat_map
 collect_concat
 inject
 reduce
@@ -70,10 +61,5 @@ min_by
 max_by
 minmax_by
 member?
-each_with_index
-each_entry
-each_slice
-each_cons
-each_with_object
 chunk
 slice_before
