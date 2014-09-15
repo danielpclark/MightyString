@@ -3,6 +3,8 @@ by Daniel P. Clark
 
 *Description:* Add Array functionality to Strings and other tools for Strings: Matching, Indexing, Substitution, Deletion, and more.
 
+Install: `gem install mightystring --pre`
+
 *Pain points this solves.*
  * After working with Python, it's obvious Ruby strings are lacking... so lets spiff them up.
  * Strings are Arrays... I mean really, think about it.  This works toward making Strings function as Arrays.
