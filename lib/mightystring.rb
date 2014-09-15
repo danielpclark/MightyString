@@ -20,22 +20,38 @@ require_relative 'mightystring/version'
 require_relative 'mightystring/string_method_missing'
 
 class String
-    include At::String
-    include Del::String
-    include Each::String
-    include Fetch::String
-    include Find::String
-    include First::String
-    include Index_All::String
-    include Join::String
-    include Last::String
-    include Map::String
-    include Match_PCI::String
-    include Pop::String
-    include Push::String
-    include Shift::String
-    include Sort::String
-    include Strip_byAC::String
-    include UnShift::String
-    include MethodMissing::String
+  include At::String
+  include Del::String
+  include Each::String
+  include Fetch::String
+  include Find::String
+  include First::String
+  include Index_All::String
+  include Join::String
+  include Last::String
+  include Map::String
+  include Match_PCI::String
+  include Pop::String
+  include Push::String
+  include Shift::String
+  include Sort::String
+  include Strip_byAC::String
+  include UnShift::String
+  include MethodMissing::String
+end
+
+
+class Array
+  # To fix a bug that our method_missing creates
+  # we need to set a MAXIMUM for FLATTEN
+  alias_method :_old_flatten, :flatten
+  alias_method :_old_flatten!, :flatten!
+
+  def flatten(level = 99)
+    _old_flatten(level)
+  end
+
+  def flatten!(level = 99)
+    _old_flatten!(level)
+  end
 end
