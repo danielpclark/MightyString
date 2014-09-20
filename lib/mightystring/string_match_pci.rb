@@ -10,7 +10,7 @@ module Match_PCI
       if not in_srch.empty?
         return !!self.downcase[in_srch.downcase]
       end
-    return false
+      return false
     end
   end
 end

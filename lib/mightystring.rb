@@ -17,7 +17,7 @@ require_relative 'mightystring/string_strip_byac'
 require_relative 'mightystring/string_unshift'
 require_relative 'mightystring/strip_html'
 require_relative 'mightystring/version'
-require_relative 'mightystring/string_method_missing'
+#require_relative 'mightystring/string_method_missing'
 
 class String
   include At::String
@@ -37,21 +37,5 @@ class String
   include Sort::String
   include Strip_byAC::String
   include UnShift::String
-  include MethodMissing::String
-end
-
-
-class Array
-  # To fix a bug that our method_missing creates
-  # we need to set a MAXIMUM for FLATTEN
-  alias_method :_old_flatten, :flatten
-  alias_method :_old_flatten!, :flatten!
-
-  def flatten(level = 99)
-    _old_flatten(level)
-  end
-
-  def flatten!(level = 99)
-    _old_flatten!(level)
-  end
+  #include MethodMissing::String
 end

@@ -1,16 +1,10 @@
 # Part of MightyString
 # by Daniel P. Clark
 # webmaster@6ftdan.com
-require 'forwardable'
 
 # At
 module At
   module String
-    extend Forwardable
-
-    def self.included(base)
-      base.send :extend, Forwardable
-    end
 
     # At : Returns string instead of char number.
     def at(in_srch = nil)
@@ -20,7 +14,12 @@ module At
       return nil
     end
 
-    delegate values_at: :chars
-    delegate delete_at: :chars
+    def values_at(*args)
+      self.chars.values_at(*args).join
+    end
+    
+    def delete_at(arg)
+      self.replace self[0...arg] + self[arg+1..-1]
+    end
   end
 end
