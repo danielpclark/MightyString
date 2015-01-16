@@ -96,7 +96,7 @@ module MightyString
 		# Pick tags/blocks of string to remove (ex: "&", ";" like in "&quot;" can become "" or "'" if rules set))
     def self.strip_html( htmlstr = "", xarg = default_options[:tag_markers] ) # xarg start, end
       warn "#{Kernel.caller.first} [DEPRECATED] `MightyString::HTML.strip_html` is depreciated. Please use MightyString::HTML.text instead."
-      text(htmlstr, options[:tag_markers] = xarg)
+      text(htmlstr, :tag_markers => xarg)
 		end
 
     def self.default_options
