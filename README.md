@@ -19,6 +19,9 @@ Install: `gem install mightystring -v 0.1.4`
 *Advanced detail.*
  * Look at the test/test_ms.rb for case usages of each feature.
 
+> As a general rule I've avoided regex for this library.  But due to regex's nature of design I will use it for
+parsing string data within **MightyString::HTML** .  I plan to keep parsing syntax as the only exception for using regex in this library.
+
 Follow this project and contribute via github http://www.github.com/danielpclark/mightystring
 <br />
 <br />
