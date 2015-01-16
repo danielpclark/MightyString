@@ -1,4 +1,6 @@
 # MightyString
+[![Gem Version](https://badge.fury.io/rb/mightystring.svg)](http://badge.fury.io/rb/mightystring)
+[![Epic Winning](https://img.shields.io/badge/Epic-Winning-brightgreen.svg?style=flat)](https://rubygems.org/gems/mightystring)
 by Daniel P. Clark
 
 *Description:* Add Array functionality to Strings and other tools for Strings: Matching, Indexing, Substitution, Deletion, and more.
