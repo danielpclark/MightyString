@@ -1,7 +1,11 @@
 # MightyString
+by Daniel P. Clark
+
 [![Gem Version](https://badge.fury.io/rb/mightystring.svg)](http://badge.fury.io/rb/mightystring)
 [![Epic Winning](https://img.shields.io/badge/Epic-Winning-brightgreen.svg?style=flat)](https://rubygems.org/gems/mightystring)
-by Daniel P. Clark
+
+[![Ruby Version Support](https://img.shields.io/badge/Ruby%20Version%20Support-1.8.7-red.svg?style=flat)](https://www.ruby-lang.org)
+
 
 *Description:* Add Array functionality to Strings and other tools for Strings: Matching, Indexing, Substitution, Deletion, and more.
 
