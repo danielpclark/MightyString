@@ -1,30 +1,30 @@
-require_relative 'mightystring/string_at'
-require_relative 'mightystring/string_del'
-require_relative 'mightystring/string_each'
-require_relative 'mightystring/string_fetch'
-require_relative 'mightystring/string_find'
-require_relative 'mightystring/string_first'
-require_relative 'mightystring/string_index_all'
-require_relative 'mightystring/string_join'
-require_relative 'mightystring/string_last'
-require_relative 'mightystring/string_map'
-require_relative 'mightystring/string_match_pci'
-require_relative 'mightystring/string_pop'
-require_relative 'mightystring/string_push'
-require_relative 'mightystring/string_shift'
-require_relative 'mightystring/string_sort'
-require_relative 'mightystring/string_strip_byac'
-require_relative 'mightystring/string_unshift'
-require_relative 'mightystring/strip_html'
-require_relative 'mightystring/version'
-#require_relative 'mightystring/string_method_missing'
+require 'mightystring/string_at'
+require 'mightystring/string_del'
+# require 'mightystring/string_each'
+require 'mightystring/string_fetch'
+# require 'mightystring/string_find'
+require 'mightystring/string_first'
+require 'mightystring/string_index_all'
+require 'mightystring/string_join'
+require 'mightystring/string_last'
+require 'mightystring/string_map'
+require 'mightystring/string_match_pci'
+require 'mightystring/string_pop'
+require 'mightystring/string_push'
+require 'mightystring/string_shift'
+require 'mightystring/string_sort'
+require 'mightystring/string_strip_byac'
+require 'mightystring/string_unshift'
+require 'mightystring/strip_html'
+require 'mightystring/version'
+#require 'mightystring/string_method_missing'
 
 class String
   include At::String
   include Del::String
-  include Each::String
+# include Each::String
   include Fetch::String
-  include Find::String
+# include Find::String
   include First::String
   include Index_All::String
   include Join::String

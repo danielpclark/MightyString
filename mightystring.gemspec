@@ -37,4 +37,5 @@ Gem::Specification.new do |s|
   s.executables = 'ms-striphtml'
   s.require_paths = ['lib']
   s.test_files  = ["test/test_ms.rb"]
+  s.required_ruby_version = '~> 1.8'
 end

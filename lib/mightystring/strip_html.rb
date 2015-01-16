@@ -1,9 +1,7 @@
-# APP_VERSION = '0.1 11-27-2012'
-
-# Mighty String - Strip HTML
-# Ruby should be easy to read, regex is not.  I believe string block handling can be done better than rough regex'ing.
+# Mighty String - HTML to text parser
 #
 # TODO *FIXME* A rare href exception gets by, as well as some comment cases, only if math_by_space is enabled. 0.1 11-27-2012 "Release Version" 
+# TODO FEATURE: Split all lines in document and make sure only one blank new-line is permitted.
 #
 # Ver 0.1 11-27-2012 "Release Version"
 # - Modularized and Gemified
@@ -24,21 +22,8 @@
 # Ver Pre_0.1
 # - HTML tag stripper with ASCII output
 
-Strip_HTML_License = "
-
-MightyString is licensed under 'The MIT License (MIT)'
-
-Copyright (c) 2012 Daniel P. Clark & 6ft Dan(TM)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
-#   REQUIRE   #
-
-require_relative 'string_match_pci' unless defined? Match_PCI
-require_relative 'string_index_all' unless defined? Index_All
+require 'string_match_pci' unless defined? Match_PCI
+require 'string_index_all' unless defined? Index_All
 
 # END REQUIRE #
 class String
@@ -48,18 +33,39 @@ end
 
 module MightyString
 	module HTML
-		# Define some generic rules here ***
-		# ---- COOL note: you can insert ASCII color escape code rules here... like for href then blue and for /a then plain
-		def self.html_to_text_codes 
-			{"&quot;"=>"'","br"=>"\n","&#39;" => "'", "td" => " | ", "&nbsp;" => " ", "&trade;" => "(TM)", "&copy;" => "(c)"} # replace html segment and insert plan text equivalent
-		end
+    def self.text(htmlstr, options = {})
+      options[:mappings] = default_options[:mappings].
+        merge(options.delete(:mappings)) if options.has_key?(:mappings)
+      options = default_options.merge(options)
+      options[:tag_markers].each { |g|
+        sh_endpoints = htmlstr.index_all(g[1])
+        if sh_endpoints.nil?
+          break
+        end
+        sh_end = htmlstr.rindex(g[1])
+        sh_start = htmlstr.rindex(g[0])
+        while !!sh_end and !!sh_start do
+          if sh_end > sh_start
+            sh_seq = htmlstr[sh_start,sh_end - sh_start + 1]
+            until sh_seq.count(g[1]) == 1 do # until we've selected only the inner block
+              sh_end = htmlstr[0,sh_end-1].rindex(g[1])
+              sh_seq = htmlstr[sh_start,sh_end - sh_start + 1]
+            end
+            if not (options[:math_by_space] and not html_math_exceptions(htmlstr[sh_start,sh_end - sh_start + 1]) == 0)
+              htmlstr = strip_first_seq( htmlstr, htmlstr[sh_start,sh_end - sh_start + 1], options[:mappings])
+            else
+              sh_end = sh_end - 1
+            end
+          else
+            sh_start = sh_start - 1
+          end
+          sh_end = htmlstr[0..sh_end].rindex(g[1])
+          sh_start = htmlstr[0..sh_start].rindex(g[0])
+        end
+      }
+      return htmlstr
+    end
 
-		def self.math_by_space
-			false # TODO FIXME exceptions get past a href 12-12-12
-		end
-
-		# End define generic rules ***
-	
 		def self.html_math_exceptions(in_str = "")
 			if in_str["< "] or in_str["& "]
 				return 1 # Execption found at beginning
@@ -72,7 +78,7 @@ module MightyString
 		end
 
 		# strip sequence out ( master string, sequence to remove, any characters to swap inplace this for that )
-		def self.strip_first_seq( mstr = "", mseq = "", cmpchar = self.html_to_text_codes )
+		def self.strip_first_seq( mstr = "", mseq = "", cmpchar = default_options[:mappings] )
 			if not cmpchar.empty? and cmpchar.keys.any? {|mkey| mseq.match_pci(mkey) } # keys exist and one of the keys match
 				cmpchar.each_key { |mkey|
 					if mseq.match_pci(mkey)
@@ -85,59 +91,28 @@ module MightyString
 			return mstr
 		end
 
+
+    # <b>DEPRECATED:</b> Please use <tt>MightyString::HTML.text</tt> instead.
 		# Pick tags/blocks of string to remove (ex: "&", ";" like in "&quot;" can become "" or "'" if rules set))
-		def self.strip_html( htmlstr = "", xarg = [["<",">"],["&",";"]] ) # xarg start, end
-			xarg.each { |g|
-				sh_endpoints = htmlstr.index_all(g[1])
-				if sh_endpoints.nil?
-					break
-				end
-				sh_end = htmlstr.rindex(g[1])
-				sh_start = htmlstr.rindex(g[0])
-				while !!sh_end and !!sh_start do
-					if sh_end > sh_start
-						sh_seq = htmlstr[sh_start,sh_end - sh_start + 1]
-						until sh_seq.count(g[1]) == 1 do # until we've selected only the inner block
-							sh_end = htmlstr[0,sh_end-1].rindex(g[1])
-							sh_seq = htmlstr[sh_start,sh_end - sh_start + 1]
-						end
-						if not (math_by_space and not html_math_exceptions(htmlstr[sh_start,sh_end - sh_start + 1]) == 0)
-							htmlstr = strip_first_seq( htmlstr, htmlstr[sh_start,sh_end - sh_start + 1])
-						else
-							sh_end = sh_end - 1
-						end
-					else
-						sh_start = sh_start - 1
-					end
-					sh_end = htmlstr[0..sh_end].rindex(g[1])
-					sh_start = htmlstr[0..sh_start].rindex(g[0])
-				end
-			}
-			return htmlstr
+    def self.strip_html( htmlstr = "", xarg = default_options[:tag_markers] ) # xarg start, end
+      warn "#{Kernel.caller.first} [DEPRECATED] `MightyString::HTML.strip_html` is depreciated. Please use MightyString::HTML.text instead."
+      text(htmlstr, options[:tag_markers] = xarg)
 		end
 
-		def self.testCase
-			pagesample = "<html><body>This code primarily removes (less than)tags(greater than) and (amperstand)code(semicolon).<br>This default behavior can be modified to fit your needs.<br>4>3 doesn't pair up, so it's visible.<br>As well as this with a space 4 > 3.<br>The opposite is 3 < 4.  Can you see me?<br>These following punctions don't get removed because they are out of matching order. ';and&'.<br>< This is visible because of the first space before the less than symbol. ><br>&This shows because it's longer then characters in length and has a space in it.;<br><br><table><tr><td>My Box Table</td></tr></table> <!-- <div>Old HTML commented out.  This is a unique case.<br>The code finds the innermost blocks and removes them outwards.  So something like '< !-- < tag >' or '< /tag > -- >' won't raise an error.<br>(I added the spaces so you can still see the ouput print.)</div> --><br><br><h1>Ruby is quite nice!</h1><br><a href='_blank'>http://www.6ftdan.com</a></body></html>"
-			puts pagesample
-			puts
-			puts " * - * - * - Before test is above. - * - * - after striphtml follows - * - * - *"
-			puts
-			puts strip_html(pagesample)
-		end
-	
-		def self.license
-			license = "Mighty_String::Strip_HTML is licensed under 'The MIT License (MIT)'
+    def self.default_options
+      {
+        :tag_markers => [["<",">"],["&",";"]],
+        :mappings => {
+          "&quot;"=>"'","br"=>"\n","&#39;" => "'", "&nbsp;" => " ", "&trade;" => "(TM)", "&copy;" => "(c)"
+        },
+        :math_by_space => false,
+        :drop_styles => true, # TODO Add this feature
+        :drop_scripts => true, # TODO Add this feature
+        :drop_iframes => false, # TODO Add this feature
+        :permitted_blank_line_rows => 1, # TODO Add this feature
+        :images_to_alt_text => false # TODO Add this feature
+      }
+    end
 
-	Copyright (c) 2012 Daniel P. Clark & 6ft Dan(TM)
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-	The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-	THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
-			puts
-			puts license
-			puts
-		end
 	end # module Strip_HTML
 end # MightyString

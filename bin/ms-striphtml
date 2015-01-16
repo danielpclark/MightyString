@@ -30,7 +30,7 @@ end
 if ARGV.any? { |s| s.downcase.include?('.htm') } then
 	ARGV.each do |s|
 		if s.downcase.include?('.htm') and File.exists?(s)
-			puts HTML.strip_html( File.open(s, "rb").read )
+			puts HTML.text( File.open(s, "rb").read )
 		end
 	end
 end
