@@ -9,7 +9,7 @@ by Daniel P. Clark
 
 *Description:* Add Array functionality to Strings and other tools for Strings: Matching, Indexing, Substitution, Deletion, and more.
 
-Install: `gem install mightystring -v 0.1.9`
+Install: `gem install mightystring`
 
 *Pain points this solves.*
  * After working with Python, it's obvious Ruby strings are lacking... so lets spiff them up.
