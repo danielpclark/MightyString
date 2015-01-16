@@ -33,3 +33,6 @@ Follow this project and contribute via github http://www.github.com/danielpclark
 <br />
 # Goal for 0.3.0
  *Have Array and String interchangable.  Same errors, same results.*
+
+> NOTES: Implementing the flatten and join methods on String breaks functionality within Rails and Rubygems.  Future
+additions will be separated into the MightyString module itself.  Although a brilliant idea may indeed resolve this.
