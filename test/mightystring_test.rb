@@ -1,8 +1,6 @@
-require 'test/unit'
-$: << 'lib/'
-require 'mightystring'
+require 'minitest_helper'
 
-class TestMightyString < Test::Unit::TestCase
+class TestMightyString < Minitest::Test
 	def test_at
 		assert "abc".at(0) == "a"
 		assert "0123456789".at(-1) == "9"
