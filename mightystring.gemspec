@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://www.github.com/danielpclark/mightystring'
   s.platform    = 'ruby'
   s.bindir      = 'bin'
-  s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  s.executables = 'ms-striphtml'
   s.require_paths = ['lib']
   s.test_files  = ["test/test_ms.rb"]
   s.required_ruby_version = '>= 1.8'
