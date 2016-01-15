@@ -20,9 +20,9 @@ Gem::Specification.new do |s|
   s.test_files  = ["test/test_ms.rb"]
   s.required_ruby_version = '>= 1.8'
 
-  s.add_development_dependency "bundler", "~> 1.9"
-  s.add_development_dependency "rake", "~> 10.0"
-  s.add_development_dependency "minitest", "~> 5.5.1"
-  s.add_development_dependency "minitest-reporters", "~> 1.0.11"
-  s.add_development_dependency "color_pound_spec_reporter", "~> 0.0.3"
+  s.add_development_dependency "bundler", "~> 1.11"
+  s.add_development_dependency "rake", "~> 10.5"
+  s.add_development_dependency "minitest", "~> 5.8"
+  s.add_development_dependency "minitest-reporters", "~> 1.1"
+  s.add_development_dependency "color_pound_spec_reporter", "~> 0.0.5"
 end
