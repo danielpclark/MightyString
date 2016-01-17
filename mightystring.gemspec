@@ -6,7 +6,7 @@ require "mightystring/version"
 Gem::Specification.new do |s|
   s.name        = 'mightystring'
   s.version     = MightyString::VERSION
-  s.licenses    = ['The MIT License (MIT)']
+  s.license    = 'MIT'
   s.summary     = "Strings (are) Arrays with Matching, Indexing, Substitution, Deletion, and more."
   s.description = "Array functionality in Strings as well as Matching, Indexing, Substitution, Deletion, and more."
   s.authors     = ["Daniel P. Clark / 6ftDan(TM)"]
@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.bindir      = 'bin'
   s.executables = 'ms-striphtml'
   s.require_paths = ['lib']
-  s.test_files  = ["test/test_ms.rb"]
+  s.test_files  = ["test/mightystring_test.rb"]
   s.required_ruby_version = '>= 1.8'
 
   s.add_development_dependency "bundler", "~> 1.11"
