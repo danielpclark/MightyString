@@ -1,6 +1,9 @@
+##MightyString
 [![Gem Version](https://badge.fury.io/rb/mightystring.svg)](http://badge.fury.io/rb/mightystring)
 
 Powerful methods for your strings.
+
+##Install
 
 Add this to your Gemfile and then run `bundle install`.
 ```ruby
