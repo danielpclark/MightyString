@@ -27,6 +27,10 @@ module MightyString
       replace del(indexes)
     end
 
+    def head offset = 1
+      self[0...offset]
+    end
+
     def index_all matcher
       arr_indexes = []
       srch_index = rindex(matcher)
@@ -73,6 +77,10 @@ module MightyString
 
     def sort!
       replace sort
+    end
+
+    def tail offset = 1
+      self[offset..-1]
     end
 
     def unshift str

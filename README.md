@@ -99,6 +99,18 @@ str
 # => "euio"
 "qa2ws3ed4rf5tg6yh7uj8ik9ol".sift( Range.new( "0", "9" ) )
 # => "23456789"
+
+# String#head
+"asdf".head
+# => "a"
+"asdf".head(3)
+# => "asd"
+
+# String#tail
+"asdf".tail
+# => "sdf"
+"asdf".tail(3)
+# => "f"
 ```
 
 ##Extras

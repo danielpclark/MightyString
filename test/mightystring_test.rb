@@ -37,6 +37,16 @@ describe MightyString do
     _("asdf".shift).must_equal "a"
   end
 
+  it "String#head" do
+    _("asdf".head).must_equal "a"
+    _("asdf".head(3)).must_equal "asd"
+  end
+
+  it "String#tail" do
+    _("asdf".tail).must_equal "sdf"
+    _("asdf".tail(3)).must_equal "f"
+  end
+
   it "sorts" do
     str = "asdf"
     _(str.sort).must_equal "adfs"
