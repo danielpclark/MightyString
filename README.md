@@ -1,5 +1,6 @@
 ##MightyString
 [![Gem Version](https://badge.fury.io/rb/mightystring.svg)](http://badge.fury.io/rb/mightystring)
+[![Build Status](https://travis-ci.org/danielpclark/MightyString.svg?branch=master)](https://travis-ci.org/danielpclark/MightyString)
 
 Powerful methods for your strings.
 
@@ -111,6 +112,18 @@ str
 # => "sdf"
 "asdf".tail(3)
 # => "f"
+
+# String#bhead and String#bisect_head
+"asdf".bhead
+# => ["a", "sdf"]
+"asdf".bhead(3)
+# => ["asd", "f"]
+
+# String#btail and String#bisect_tail
+"asdf".btail
+# => ["sdf", "a"]
+"asdf".btail(3)
+# => ["f", "asd"]
 ```
 
 ##Extras
