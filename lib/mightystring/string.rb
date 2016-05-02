@@ -5,6 +5,8 @@ module MightyString
     def self.included(base)
       base.class_eval {
         alias_method :at, :[]
+        alias_method :bhead, :bisect_head
+        alias_method :btail, :bisect_tail
 
         extend Forwardable
         def_delegators :chars, :first, :last, :values_at
@@ -29,6 +31,10 @@ module MightyString
 
     def head offset = 1
       self[0...offset]
+    end
+
+    def bisect_head offset = 1
+      [head(offset), tail(offset)]
     end
 
     def index_all matcher
@@ -81,6 +87,10 @@ module MightyString
 
     def tail offset = 1
       self[offset..-1]
+    end
+
+    def bisect_tail offset = 1
+      [tail(offset), head(offset)]
     end
 
     def unshift str

@@ -47,6 +47,20 @@ describe MightyString do
     _("asdf".tail(3)).must_equal "f"
   end
 
+  it "String#bisect_head and String#head_" do
+    _("asdf".bisect_head).must_equal ["a", "sdf"]
+    _("asdf".bisect_head(3)).must_equal ["asd", "f"]
+    _("asdf".bhead).must_equal ["a", "sdf"]
+    _("asdf".bhead(3)).must_equal ["asd", "f"]
+  end
+
+  it "String#bisect_tail and String#tail_" do
+    _("asdf".bisect_tail).must_equal ["sdf", "a"]
+    _("asdf".bisect_tail(3)).must_equal ["f", "asd"]
+    _("asdf".btail).must_equal ["sdf", "a"]
+    _("asdf".btail(3)).must_equal ["f", "asd"]
+  end
+
   it "sorts" do
     str = "asdf"
     _(str.sort).must_equal "adfs"
