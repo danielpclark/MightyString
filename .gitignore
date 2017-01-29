@@ -1,3 +1,4 @@
+/.shard/
 *.gem
 *.swp
 /.idea/
