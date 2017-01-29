@@ -1,4 +1,5 @@
 ##MightyString
+[![Build Status](https://travis-ci.org/danielpclark/MightyString.svg?branch=crystal)](https://travis-ci.org/danielpclark/MightyString)
 
 Powerful methods for your strings.
 
