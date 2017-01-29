@@ -1,0 +1,14 @@
+name: mightystring
+version: 1.0.0
+
+authors:
+  - Daniel P. Clark <6ftdan@gmail.com>
+
+development_dependencies:
+  minitest:
+    git: https://github.com/ysbaddaden/minitest.cr.git
+    version: "~> 0.3.5"
+
+crystal: 0.20.5
+
+license: MIT

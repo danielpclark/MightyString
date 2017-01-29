@@ -1,31 +1,26 @@
 ##MightyString
-[![Gem Version](https://badge.fury.io/rb/mightystring.svg)](http://badge.fury.io/rb/mightystring)
-[![Build Status](https://travis-ci.org/danielpclark/MightyString.svg?branch=master)](https://travis-ci.org/danielpclark/MightyString)
 
 Powerful methods for your strings.
 
+This is a partially ported version of the Ruby gem "mightystring" over to Crystal.  Not nearly as
+much functionality is provided but hopefully these methods will still be found useful!
+
 ##Install
 
-Add this to your Gemfile and then run `bundle install`.
-```ruby
-gem 'mightystring', '~> 1.0'
+Add this shard you your shard.yml file.
+
+```
+dependencies:
+  mightystring:
+    github: danielpclark/mightystring
+    branch: crystal
 ```
 
-Or you can just install and use it manually.
-```ruby
-gem install mightystring
-```
+And install your dependencies with `crystal deps`.  Then add `require "mightystring"` where you need it.
+
 ##Usage
 
 ```ruby
-# String#at
-"abc".at(0)
-# => "a"
-"0123456789".at(-1)
-# => "9"
-"vwq".at(5)
-# => nil
-
 # String#del
 "asdfasdf".del(0..2)
 # => "fasdf"
@@ -36,15 +31,6 @@ gem install mightystring
 "asdfasdf".del("a")
 # => "sdfsdf"
 
-# String#del!
-str = "asdfasdf"
-str.del!("sd")
-str
-# => "afaf"
-str.del!(1..2)
-str
-# => "af"
-
 # String#first
 "asdf".first
 # => "a"
@@ -53,35 +39,12 @@ str
 "asdf".last
 # => "f"
 
-# String#pop
-"asdf".pop
-# => "f"
-
-# String#push
-"asdf".push("r")
-# => "asdfr"
-
-# String#shift
-"asdf".shift
-# => "a"
-
 # String#sort
 str = "asdf"
 str.sort
 # => "adfs"
 str
 # => "asdf"
-
-# String#sort!
-str = "asdf"
-str.sort!
-# => "adfs"
-str
-# => "adfs"
-
-# String#unshift
-"asdf".unshift("r")
-# => "rasdf"
 
 # String#values_at
 "asdfasdfasdf".values_at(0,5,-1)
@@ -125,8 +88,3 @@ str
 "asdf".btail(3)
 # => ["f", "asd"]
 ```
-
-##Extras
- * MightyString::HTML.text provides a more ideal HTML to ASCII formatting output.  This is an advanced block "filtering" module.  It works very well with, currently, extremely rare cases that fall through it's fingers.  Regardless it's beautiful, and will strive to be more so.
- 
-Look at the test/mightystring_test.rb for case usages of each feature.

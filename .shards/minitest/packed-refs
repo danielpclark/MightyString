@@ -1,0 +1,25 @@
+# pack-refs with: peeled fully-peeled 
+60215ad0e1a88b1625f1d90fec4048deb1ad7847 refs/heads/fix-ivars
+f0989f73b7725268e98b62360ee215f87d6f708c refs/heads/master
+630fde63b1f6f2b93ab6cda697010c93cd7eb236 refs/heads/spec-let-with-type-declaration
+c5052fb0128b6957cc756d82c009ca721a505bf9 refs/pull/1/head
+64adaa7b0912630c2e24af3523728a0ef999bde3 refs/pull/10/head
+cdee65e3ddb6b290329f3159a85e462bc5a392fe refs/pull/12/head
+4c39edb3a2ac6517a3fe248ab70d6c0360b2891c refs/pull/7/head
+a5a78ecaa37299b62ddf6a84be1a8100b32ddea2 refs/pull/7/merge
+2b8e7f09985e2b4d5e4a2dad529f4ae551c946ed refs/pull/8/head
+15033c43f24be8f472ecc81ef5b675fe43b20050 refs/pull/9/head
+6e9ee7d1b3f28c53a2105eb19465de7bb549b8f7 refs/tags/v0.1.0
+f4b7ae8c20524e619d665f042e851cc178c7af80 refs/tags/v0.1.1
+5f8dbf2cd000ad358e0a1a48dc308e17fe6e2c7c refs/tags/v0.1.2
+8f4f0684ce308edb3a777ce01ff50d520e7fa941 refs/tags/v0.1.3
+420bec39fd84428f384813b308ba4498b20b4f17 refs/tags/v0.1.4
+47202b74aa97e415be1ae5d7b19de472b66aee2b refs/tags/v0.1.5
+28b76396277f356a0f811ab877358ceeb2df5a3c refs/tags/v0.2.0
+a3299eafebed071987f14c01591cb71d4395ce85 refs/tags/v0.3.0
+63ed760fb334fb473f9693f41b672b35e0d4b117 refs/tags/v0.3.1
+8a67ad51dea175c96334296eca6ed28cb85dc07e refs/tags/v0.3.2
+d7f0723d4d533274a8ba4aedd881613eba7f3798 refs/tags/v0.3.3
+c600f560bf0c6171e3abd78fdaf95fb6e1bd76d2 refs/tags/v0.3.4
+^c0244ed4ad8b5c0bfa077efb4af2a8091b76201e
+f0989f73b7725268e98b62360ee215f87d6f708c refs/tags/v0.3.5
